@@ -1,0 +1,1 @@
+// Main page (React + Phaser container)

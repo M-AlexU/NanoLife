@@ -1,0 +1,20 @@
+{
+    "name": "Nanozostera Game",
+    "short_name": "NanoLife",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#87CEEB",
+    "theme_color": "#87CEEB",
+    "icons": [
+    {
+        "src": "/assets/icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+    },
+    {
+        "src": "/assets/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }
+    ]
+}
