@@ -42,6 +42,23 @@
   width: 55vw;
 }
 
+.game-content-intro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center game name and play button */
+  text-align: center;
+  z-index: 2; /* Render above the background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 16px;
+  height: 40vh;
+  width: 55vw;
+}
+
 .game-name {
   max-width: 80%; /* Scale the game name image appropriately */
   height: 19%;
@@ -94,8 +111,8 @@
 
 .next-button {
   position: absolute;
-  bottom: 5%;
-  left: 90%;
+  bottom: -7%;
+  left: 92%;
   transform: translateX(-50%);
   background-color: #FFFCF6;
   border: 2px solid #1f8f00;
@@ -124,6 +141,104 @@
   border-color: #125002;
   background-color: #fff;
 }
+
+/* Wrapper for the game-content and sidebar */
+.game-wrapper {
+  display: flex;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  justify-content: center; /* Centers the content horizontally */
+  align-items: center; /* Centers the content vertically */
+  position: relative;
+}
+
+/* The aquarium/game screen content */
+.game-content-game {
+  flex-shrink: 0; /* Prevents shrinking when the screen is small */
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 16px;
+  height: 90vh;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  z-index: 2;
+}
+
+/* Sidebar container */
+.sidebar {
+  flex-shrink: 0; /* Prevents shrinking */
+  height: 90vh; /* Match the height of the game content */
+  width: 5vw; /* Fixed width for the sidebar */
+  background-color: #ececec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  margin-left: 10px; /* Space between game content and sidebar */
+  z-index: 2;
+}
+
+/* Sidebar buttons */
+.sidebar-button {
+  width: 32px;
+  height: 32px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-button:hover {
+  background-color: #0056b3;
+}
+
+/* Specific button styles */
+.currency-button {
+  background-color: #ffc107;
+}
+
+.currency-button:hover {
+  background-color: #e0a800;
+}
+
+.currency-button:active {
+  background-color: #be9004;
+}
+
+.settings-button {
+  background-color: #6c757d;
+}
+
+.settings-button:hover {
+  background-color: #5a6268;
+}
+
+.settings-button:active {
+  background-color: #4d565e;
+}
+
+.education-button {
+  background-color: #28a745;
+}
+
+.education-button:hover {
+  background-color: #218838;
+}
+
+.education-button:active {
+  background-color: #19772e;
+}
+
 
 @keyframes fadeIn {
   from {

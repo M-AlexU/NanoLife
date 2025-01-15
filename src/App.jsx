@@ -86,7 +86,7 @@ export default function App() {
           )}
 
           {gameState === "intro" && (
-            <div className="game-content">
+            <div className="game-content-intro">
               <img src={plantImage} alt="Plant" className="plant-image" />              
               <p className="dialogue-text">{dialogueLines[currentDialogue]}</p>              
               <button className="next-button" onClick={handleNextDialogue}>
@@ -99,13 +99,25 @@ export default function App() {
             </div>
           )}
 
-      {gameState === "game" && (
-        <div className="game-content">
-          {/* Placeholder for the aquarium/game screen || De adaugat intrare catre coin, settings si educational page||*/}
-          <p>Welcome to the aquarium! Let’s learn how to play.</p>
-          {/* Add aquarium-related UI here */}
-        </div>
-      )}
+          {gameState === "game" && (
+            <div className="game-wrapper">
+              <div className="game-content-game">
+                <p>Welcome to the aquarium! Let’s learn how to play.</p>
+                {/* Add aquarium-related UI here */}
+              </div>
+              <div className="sidebar">
+                <button className="sidebar-button currency-button" onClick={() => console.log('Currency')}>
+                  💰
+                </button>
+                <button className="sidebar-button settings-button" onClick={() => console.log('Settings')}>
+                  ⚙️
+                </button>
+                <button className="sidebar-button education-button" onClick={() => console.log('Learn about Nanozostera!')}>
+                  📘
+                </button>
+              </div>
+            </div>
+          )}
       </div>        
     </div>
   );
