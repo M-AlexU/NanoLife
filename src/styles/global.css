@@ -241,7 +241,7 @@
 
 /** SETTINGS PAGE STYLING **/
 
-.settings-page {
+.page {
   color: #333;
   display: block;
   height: 80vh;
@@ -249,7 +249,7 @@
   overflow: scroll;
 }
 
-.settings-header {
+.page-header {
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: bold;
@@ -352,6 +352,17 @@
 .close-button{
   position: absolute;
   right: 7em;
+}
+
+.education-paragraph{
+  padding: 1em 3em 1em 2em;
+  text-align: left;
+  font-weight: 600;
+}
+
+.education-paragraph::before{
+  content: '🌿';
+  font-size: 2em;
 }
 
 @keyframes fadeIn {

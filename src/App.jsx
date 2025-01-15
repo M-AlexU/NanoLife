@@ -9,6 +9,7 @@ import plantImage from '/assets/plant_sad.png'; // Image of the plant
 import triangle from '/assets/triangle.svg';
 
 import SettingsPage from './pages/SettingPage';
+import EducationPage from './pages/EducationPage';
 import AutoplayAudio from './components/AutoplayAudio';
 
 export default function App() {
@@ -125,6 +126,14 @@ export default function App() {
             )
           }
 
+          {
+            gameState === "education" && (
+              <EducationPage
+                resetGameMode = {resetGameMode}
+              />
+            )
+          }
+
           {gameState === "game" && (
             <div className="game-wrapper">
               <div className="game-content-game">
@@ -138,7 +147,7 @@ export default function App() {
                 <button className="sidebar-button settings-button" onClick={() => setGameState('settings')}>
                   ⚙️
                 </button>
-                <button className="sidebar-button education-button" onClick={() => console.log('Learn about Nanozostera!')}>
+                <button className="sidebar-button education-button" onClick={() => setGameState('education')}>
                   📘
                 </button>
               </div>
