@@ -4,6 +4,9 @@
   width: 100vw; /* Full viewport width */
   overflow: hidden;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .splash-screen {
@@ -41,13 +44,14 @@
 
 .game-name {
   max-width: 80%; /* Scale the game name image appropriately */
+  height: 19%;
   margin-bottom: 20px;
   animation: float 10s ease-in-out infinite; /* Add floating animation */
   margin-top: 16px;
 }
 
 .play-button {
-  width: 200px; /* Set a default size for the play button */
+  width: 22vw; /* Set a default size for the play button */
   cursor: pointer; /* Show pointer cursor for interactivity */
   transition: transform 0.3s ease;
 }
@@ -123,5 +127,32 @@
   }
   100% {
     transform: translate(0, 0); /* Return to the original position */
+  }
+}
+
+/* Landscape mode styles */
+@media (orientation: landscape) {
+  .rotate-message {
+    display: none; /* Hide the rotate message */
+  }
+}
+
+/* Portrait mode styles */
+@media (orientation: portrait) {
+  .app-content {
+    display: none; /* Hide the app content */
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    overflow: hidden;
+    position: relative;
+  }
+
+  .rotate-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 20px;
   }
 }
