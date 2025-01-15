@@ -8,11 +8,15 @@ import playButton from '/assets/button_play.png'; // The "PLAY" button image
 import plantImage from '/assets/plant_sad.png'; // Image of the plant
 import triangle from '/assets/triangle.svg';
 
+import SettingsPage from './pages/SettingPage';
+import AutoplayAudio from './components/AutoplayAudio';
+
 export default function App() {
   const [showGameName, setShowGameName] = useState(false); // Controls when the game name appears
   const [isLandscape, setIsLandscape] = useState(window.innerWidth > window.innerHeight);
   const [gameState, setGameState] = useState("splash"); // Track the current game state
   const [currentDialogue, setCurrentDialogue] = useState(0); // Track current dialogue line
+  const [audioPlay, setAudioPlay] = useState(false); //Track if audio should be playing
 
   const dialogueLines = [
     "Buna! Sunt Nanozostera și am nevoie de ajutor!",
@@ -56,6 +60,10 @@ export default function App() {
     return <div className="rotate-message">Please rotate your device to landscape mode!</div>;
   }
 
+  const handleCheckboxChange = (newState) => {
+    setAudioPlay(newState);
+  }
+
   return (
     <div className="app">
       {/* Message for portrait mode */}
@@ -71,17 +79,21 @@ export default function App() {
             className={`background fade-in`} 
           />
 
+          <AutoplayAudio play={audioPlay} />
+
           {gameState === "splash" && (
             <div className="splash-screen">
-              <div className="game-content fade-in-button">
-                <img src={gameName} alt="Game Name" className="game-name" />
-                <img 
-                  src={playButton} 
-                  alt="Play Button" 
-                  className="play-button"
-                  onClick={handlePlayClick}
-                />
-              </div>
+              {showGameName && (
+                <div className="game-content fade-in-button">
+                  <img src={gameName} alt="Game Name" className="game-name" />
+                  <img 
+                    src={playButton} 
+                    alt="Play Button" 
+                    className="play-button"
+                    onClick={handlePlayClick}
+                  />
+                </div>  
+              )}              
             </div>              
           )}
 
@@ -99,6 +111,15 @@ export default function App() {
             </div>
           )}
 
+          {
+            gameState === "settings" && (
+              <SettingsPage
+                isChecked = {audioPlay}
+                onCheckboxChange = {handleCheckboxChange}
+              />
+            )
+          }
+
           {gameState === "game" && (
             <div className="game-wrapper">
               <div className="game-content-game">
@@ -109,7 +130,7 @@ export default function App() {
                 <button className="sidebar-button currency-button" onClick={() => console.log('Currency')}>
                   💰
                 </button>
-                <button className="sidebar-button settings-button" onClick={() => console.log('Settings')}>
+                <button className="sidebar-button settings-button" onClick={() => setGameState('settings')}>
                   ⚙️
                 </button>
                 <button className="sidebar-button education-button" onClick={() => console.log('Learn about Nanozostera!')}>
