@@ -64,6 +64,10 @@ export default function App() {
     setAudioPlay(newState);
   }
 
+  const resetGameMode = () => {
+    setGameState('game');
+  }
+
   return (
     <div className="app">
       {/* Message for portrait mode */}
@@ -116,6 +120,7 @@ export default function App() {
               <SettingsPage
                 isChecked = {audioPlay}
                 onCheckboxChange = {handleCheckboxChange}
+                resetGameMode = {resetGameMode}
               />
             )
           }

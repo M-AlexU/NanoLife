@@ -1,15 +1,19 @@
 import triangle from '../../public/assets/triangle_gray.svg';
+import closeButton from '../../public/assets/close_button.svg';
 
 import PropTypes from 'prop-types';
 
-const SettingsPage = ({isChecked, onCheckboxChange}) => {
+const SettingsPage = ({isChecked, onCheckboxChange, resetGameMode}) => {
     const handleChange = (event) => {
         onCheckboxChange(event.target.checked);
     }
 
+    const resetMode = () => resetGameMode();
+
     return(
         <div className="game-wrapper">
             <div className="game-content-game settings-page">
+                <img onClick={resetMode} className='close-button' src={closeButton} alt="X" />
                 <div>
                     <h1 className="settings-header">Sound & Notifications</h1>
                     <div className="settings-content">
@@ -82,5 +86,6 @@ export default SettingsPage;
 
 SettingsPage.propTypes = {
     isChecked: PropTypes.bool,
-    onCheckboxChange: PropTypes.func
+    onCheckboxChange: PropTypes.func,
+    resetGameMode: PropTypes.func
 }

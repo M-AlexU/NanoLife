@@ -244,8 +244,8 @@
 .settings-page {
   color: #333;
   display: block;
-  height: 85vh;
-  padding: 2.5vh 0;
+  height: 80vh;
+  padding: 5vh 0;
   overflow: scroll;
 }
 
@@ -266,7 +266,7 @@
   justify-content: space-between;
   align-items: center;
   padding: .5em 2em;
-  margin: .5em;
+  margin: .5em 3em .5em .5em;
   background-color: rgba(177, 177, 177, 0.7);
 }
 
@@ -347,6 +347,11 @@
 
 .version-text{
   color: #5B5B5B;
+}
+
+.close-button{
+  position: absolute;
+  right: 7em;
 }
 
 @keyframes fadeIn {
