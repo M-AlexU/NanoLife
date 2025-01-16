@@ -17,7 +17,7 @@
     position: absolute;
     width: 20%;
     height: 20%;
-    background: url("./assets/Algae 1.png") no-repeat center center;
+    background: url("../../public/assets/Algae 1.png") no-repeat center center;
     background-size: contain;
     cursor: pointer;
     animation: float 3s infinite ease-in-out;
@@ -66,7 +66,7 @@
 }
 
 .thermometer {
-    background: url("./assets/Temperature.png") no-repeat;
+    background: url("../../public/assets/Temperature.png") no-repeat;
     background-size: contain;
     width: 240px;
     height: 60px;
@@ -81,7 +81,7 @@
 }
 
 .salinity-meter {
-    background: url("./assets/Salinity.png") no-repeat;
+    background: url("../../public/assets/Salinity.png") no-repeat;
     background-size: contain;
     height: 180px;
     width: 80px;
@@ -132,7 +132,7 @@ button:focus{
 }
 
 .Nanoz {
-    background: url("./assets/Nanoz 2.png") no-repeat center center;
+    background: url("../../public/assets/Nanoz 2.png") no-repeat center center;
     background-size: contain;
     position: relative;
     left: 30%;
@@ -185,7 +185,7 @@ button:focus{
 
 /* Thermometer styling */
 .large-thermometer {
-    background: url("./assets/Temperature.png") no-repeat;
+    background: url("../../public/assets/Temperature.png") no-repeat;
     background-size: contain;
     width: 600px;
     height: 200px;
@@ -229,7 +229,7 @@ button:focus{
 }
 
 .large-salinity-controls {
-    background: url("./assets/Salinity.png") no-repeat;
+    background: url("../../public/assets/Salinity.png") no-repeat;
     background-size: contain;
     height: 900px;
     margin-top: 10%;
