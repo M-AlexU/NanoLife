@@ -6,7 +6,7 @@ import Gameplay from './components/Gameplay';
 import background from '/assets/background.png'; // background image
 import gameName from '/assets/nanoLife_title.png'; // The game's name image
 import playButton from '/assets/button_play.png'; // The "PLAY" button image
-import plantImage from '/assets/plant_sad.png'; // Image of the plant
+import plantImage from '/assets/Nanoz sad 2.png'; // Image of the plant
 import triangle from '/assets/triangle.svg';
 
 import SettingsPage from './pages/SettingPage';

@@ -93,9 +93,9 @@
 /* Styles for the intro sequence */
 .plant-image {
   position: absolute;
-  top: -2%;
-  right: -1%;
-  max-width: 15%; /* Adjust the size of the plant */
+  top: 4%;
+  right: -4%;
+  max-width: 20%; /* Adjust the size of the plant */
   z-index: 2;
 }
 
