@@ -235,9 +235,7 @@ const generateRandomPosition = (containerWidth, containerHeight, margin = 20) =>
     return { x, y, id: Math.random().toString(36).slice(2, 9) }; // Unique ID
 };
 
-
 Gameplay.propTypes = {
-    aquariumTop: PropTypes.number.isRequired,
     gold: PropTypes.number.isRequired,
     setGold: PropTypes.func.isRequired,
     temperature: PropTypes.number.isRequired,
