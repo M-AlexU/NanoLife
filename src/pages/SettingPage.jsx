@@ -44,7 +44,7 @@ const SettingsPage = ({isChecked, onCheckboxChange, resetGameMode}) => {
                 <div>
                     <h1 className="page-header">Resurse educationale</h1>
                     <a href='https://en.wikipedia.org/wiki/Zostera_marina' target='_blank' className="settings-content">
-                        <span className="settings-label">📘 Discopera Nanozostera</span>
+                        <span className="settings-label">📘 Descopera Nanozostera</span>
                         <img 
                             src={triangle} 
                             alt="Next" 
