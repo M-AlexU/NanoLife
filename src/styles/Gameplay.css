@@ -166,6 +166,12 @@ button:focus{
     height: 50px;
 }
 
+.dark-mode-container {
+    position: absolute;
+    bottom: 10px; /* Distance from the bottom of the aquarium */
+    right: 10px; /* Distance from the right side of the aquarium */
+}
+
 /* Blurred background */
 .overlay-thermometer {
     position: fixed;
@@ -224,6 +230,16 @@ button:focus{
 .buttons-container-thermometer {
     display: flex;
     justify-content: space-around;
+}
+
+.celsius {
+    font-size: 2rem;
+    margin-left: -0.4rem;
+}
+
+.large-thermometer .celsius {
+    font-size: 6rem;
+    margin-left: -1rem;
 }
 
 .overlay-content-salinity {

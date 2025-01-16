@@ -28,19 +28,21 @@ const SettingsPage = ({isChecked, onCheckboxChange, resetGameMode}) => {
                             />
                         </div>
                     </div>
-                    <div className="settings-content">
+                    {/* <div className="settings-content">
                         <label htmlFor='reminder-checkbox' className="settings-label">🔔 Notificari</label>
                         <div className="checkbox-wrapper">
                             <input id='reminder-checkbox' type="checkbox" className="settings-checkbox" />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
+                {/*
                 <div>
                     <h1 className="page-header">Personalizare</h1>
                     <div className="settings-content">
                         <span className="settings-label">⚠️ Resetare progres</span>
                     </div>
                 </div>
+                */}
                 <div>
                     <h1 className="page-header">Resurse educationale</h1>
                     <a href='https://en.wikipedia.org/wiki/Zostera_marina' target='_blank' className="settings-content">

@@ -173,16 +173,16 @@ const Gameplay = ({ setGold, temperature, setTemperature, isThermostatExpanded, 
                 onClick={handleThermostatClick}
                 style={{ top: `${aquariumTop - 10}px` }} // Adjusting 80px from the top of the aquarium
             >
-                {temperature}
+                {temperature}<span className="celsius">°</span>
             </div>
         </div>
 
         {/* Feed Nutrients */}
-        <div className="nutrients">
-            <img src={foodButton} alt="Feed" className="nutrients" onClick={handleThrowNutrient} />
+        <div className="nutrients" >
+            <img src={foodButton} alt="Feed" className="nutrients" onClick={handleThrowNutrient}/>
         </div>
 
-        <div className="nutrients">
+        <div className="dark-mode-container">
             <img src={darkModeButton} alt="darkMode" className="dark-mode" onClick={handleDarkMode} />
         </div>
 
@@ -196,7 +196,7 @@ const Gameplay = ({ setGold, temperature, setTemperature, isThermostatExpanded, 
                     <div className="overlay-content-thermometer">
                         <img src={closeButton} alt="X" className="close-button" onClick={() => setIsThermostatExpanded(false)} />
                         <div className="large-thermometer" onClick={handleThermostatClick}>
-                            {temperature}
+                            {temperature}<span className="celsius">°</span>
                         </div>
                         <div className="buttons-thermometer-flex">
                             <img className="decrement-btn" src={minusButton} alt="-" onClick={decrementTemperature} />
