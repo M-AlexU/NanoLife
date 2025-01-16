@@ -4,7 +4,7 @@
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    background: url("./assets/Acvariu.png") no-repeat center center;
+    background: url("../../public/assets/Acvariu.png") no-repeat center center;
     background-size: cover;
     padding: 0;
     border: 2px solid #333;
