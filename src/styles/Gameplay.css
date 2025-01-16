@@ -38,6 +38,18 @@
     animation: nutrient-fall 3s ease-in-out forwards;
 }
 
+.food-1-background{
+    background: rgb(0, 185, 15);
+}
+
+.food-2-background{
+    background: rgb(10, 89, 207);
+}
+
+.food-3-background{
+    background: rgb(185, 43, 0);
+}
+
   /* Float animation for algae */
 @keyframes float {
     0%, 100% {

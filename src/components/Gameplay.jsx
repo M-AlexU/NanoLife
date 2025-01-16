@@ -11,7 +11,7 @@ import foodButton from "../../public/assets/mancare.png";
 // Utility function for random number generation
 const generateRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-const Gameplay = ({ setGold, temperature, setTemperature, isThermostatExpanded, setIsThermostatExpanded, salinity, setSalinity, isSalinityExpanded, setIsSalinityExpanded }) => {
+const Gameplay = ({ setGold, temperature, setTemperature, isThermostatExpanded, setIsThermostatExpanded, salinity, setSalinity, isSalinityExpanded, setIsSalinityExpanded, equippedItem }) => {
     const [currentDate, setCurrentDate] = useState(new Date().toDateString());
     const [algae, setAlgae] = useState([]);
     const [nutrientsThrown, setNutrientsThrown] = useState([]);
@@ -148,7 +148,7 @@ const Gameplay = ({ setGold, temperature, setTemperature, isThermostatExpanded, 
             {nutrientsThrown.map((nutrient) => (
             <div
                 key={nutrient.id}
-                className="nutrient"
+                className={equippedItem ? `${equippedItem.className}-background nutrient` : `nutrient`}
                 style={{
                 top: `${nutrient.y}%`,
                 left: `${nutrient.x}%`,
@@ -245,5 +245,6 @@ Gameplay.propTypes = {
     salinity: PropTypes.number.isRequired,
     setSalinity: PropTypes.func.isRequired,
     isSalinityExpanded: PropTypes.bool.isRequired,
-    setIsSalinityExpanded: PropTypes.func.isRequired
+    setIsSalinityExpanded: PropTypes.func.isRequired,
+    equippedItem: PropTypes.object,
 };

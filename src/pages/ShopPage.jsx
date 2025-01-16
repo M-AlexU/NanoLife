@@ -1,7 +1,9 @@
+import PropTypes from 'prop-types';
+
 import closeButton from '../../public/assets/close_button.svg';
 import { useState } from 'react';
 
-const ShopPage = ({gold, setGold, resetGameMode}) => {
+const ShopPage = ({gold, setGold, resetGameMode, inventory, setInventory, setEquippedItem}) => {
     const [feedbackMessage, setFeedbackMessage] = useState(""); // Feedback for the user
 
     const resetMode = () => resetGameMode();
@@ -12,38 +14,43 @@ const ShopPage = ({gold, setGold, resetGameMode}) => {
         {id: 3, name: 'AlgaNutri', price: 500, className: 'food-3'}
     ];
 
-    const alge = [
-        {id: 1, name: 'Alga Rebelă', price: 500, className: 'algae-1'},
-        {id: 2, name: 'Alga Vital', price: 500, className: 'algae-2'},
-        {id: 3, name: 'Alga Nutri', price: 500, className: 'algae-3'}
-    ];
+  /*   const alge = [
+        {id: 4, name: 'Alga Rebelă', price: 500, className: 'algae-1'},
+        {id: 5, name: 'Alga Vital', price: 500, className: 'algae-2'},
+        {id: 6, name: 'Alga Nutri', price: 500, className: 'algae-3'}
+    ]; */
 
     // Handle the item purchase process
     const handleItemPurchase = (item) => {
-        if (gold >= item.price) {
-        // Deduct gold from the user's total
-        setGold(gold - item.price);
-
-        // Add the item to the inventory if not already bought
-        if (!inventory.some((i) => i.id === item.id)) {
-            setInventory([...inventory, item]);
-            setFeedbackMessage(`Ai cumparat ${item.name}! 🎉`);
+        if (!inventory.some((i) => i.id === item.id))  {
+            
+            if (gold >= item.price) {
+                // Deduct gold from the user's total
+                setGold(gold - item.price);
+                // Add the item to the inventory if not already bought
+                setInventory([...inventory, item]);
+                setEquippedItem(item);
+                setFeedbackMessage(`Ai cumparat ${item.name}! 🎉`);
+            } else {
+                setFeedbackMessage(`Nu ai destui bani! 🪙`);
+            }
+            
+            // Auto-equip the item
+            
+            // Optionally, clear feedback after a few seconds
+            setTimeout(() => setFeedbackMessage(""), 3000);
         } else {
-            setFeedbackMessage(`Ai deja acest item!`);
-        }
-
-        // Auto-equip the item
-        setEquippedItem(item);
-
-        // Optionally, clear feedback after a few seconds
-        setTimeout(() => setFeedbackMessage(""), 3000);
-        } else {
-        setFeedbackMessage("Nu ai destui bani! 🪙");
+            setFeedbackMessage("Ai deja acest item!");
+            setEquippedItem(item);
         }
     };
 
     return(
         <div className="game-wrapper">
+
+            {/* Feedback Message */}
+            {feedbackMessage && <div className="feedback-message">{feedbackMessage}</div>}
+
             <div className="game-content-settings-education page">
                 <img onClick={resetMode} className='close-button shop' src={closeButton} alt="X" />
                 <div className="shop-food">
@@ -66,7 +73,7 @@ const ShopPage = ({gold, setGold, resetGameMode}) => {
                         </div>
                     </div>
                 </div>
-                <div className="shop-algae">
+                {/* <div className="shop-algae">
                     <h1 className="page-header">Alge</h1>
                     <div className="carousel">
                         <div className="carousel-item" onClick={() => handleItemPurchase(alge[0])}>
@@ -85,7 +92,7 @@ const ShopPage = ({gold, setGold, resetGameMode}) => {
                             <div className="item-price">{alge[2].price} 🪙</div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="upcoming-backgrounds">
                     <h1 className="page-header">Fundaluri</h1>
                     <h1 className="page-header" style={{color: "grey"}}>In curand</h1>
@@ -101,3 +108,13 @@ const ShopPage = ({gold, setGold, resetGameMode}) => {
 }
 
 export default ShopPage;
+
+ShopPage.propTypes = {
+    gold: PropTypes.number,
+    setGold: PropTypes.func,
+    resetGameMode: PropTypes.func,
+    inventory: PropTypes.array,
+    setInventory: PropTypes.func,
+    equipedItem: PropTypes.object,
+    setEquippedItem: PropTypes.func
+}

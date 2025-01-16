@@ -153,6 +153,8 @@ export default function App() {
                 resetGameMode = {resetGameMode}
                 inventory = {inventory}
                 setInventory = {setInventory}
+                equippedItem = {equippedItem}
+                setEquippedItem = {setEquippedItem}
               />
             )
           }
@@ -173,6 +175,7 @@ export default function App() {
                     setSalinity={setSalinity}
                     isSalinityExpanded={isSalinityExpanded}
                     setIsSalinityExpanded={setIsSalinityExpanded}
+                    equippedItem={equippedItem}
                   />
                 }
               </div>
