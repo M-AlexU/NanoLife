@@ -413,6 +413,11 @@
   right: 20%;
 }
 
+.close-button.shop{
+  position: absolute;
+  right: 24%;
+}
+
 .education-paragraph{
   padding: 1em 3em 1em 2em;
   text-align: left;
@@ -422,6 +427,101 @@
 .education-paragraph::before{
   content: '🌿';
   font-size: 2em;
+}
+
+.shop-food .page-header{
+  margin-bottom: 12px;
+  padding-left: 0;
+  text-align: center;
+}
+
+.shop-algae .page-header{
+  padding-left: 0;
+  text-align: center;
+}
+
+.upcoming-backgrounds .page-header{
+  padding-left: 0;
+  text-align: center;
+}
+
+.sidebar.shop {
+  height: 90vh;
+}
+
+/* Carousel Container */
+.carousel {
+  display: flex;
+  overflow-x: auto; /* Allow horizontal scrolling */
+  gap: 1rem; /* Space between items */
+  padding: 1rem; /* Optional padding around the carousel */
+  margin: 0 10px;
+  border-radius: 6px;
+  scroll-behavior: smooth; /* Smooth scrolling for navigation */
+  background-color: #f9f9f9; /* Light background for contrast */
+}
+
+/* Carousel Item */
+.carousel-item {
+  flex: 0 0 15.3svw; /* Each item takes up 200px width */
+  background: #fff; /* White background for the card */
+  border: 1px solid #ddd; /* Light border around the card */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 1rem; /* Padding inside each card */
+  text-align: center; /* Center the content */
+  transition: transform 0.3s; /* Animation for hover */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel-item:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Item Name */
+.carousel-item .item-name {
+  font-size: 1rem; /* Standard font size */
+  font-weight: bold; /* Emphasize the name */
+  color: #333; /* Dark text color */
+  margin-bottom: 0.3rem; /* Space below the name */
+}
+
+/* Price */
+.carousel-item .item-price {
+  font-size: 0.9rem; /* Slightly smaller font */
+  color: #007BFF; /* Highlight price with a blue color */
+  font-weight: 500; /* Medium weight for price */
+}
+
+/* Optional: Hide Scrollbar */
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.food-1 {
+  width: 4rem;  
+  height: 4rem;
+  background: rgb(0, 185, 15);
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.food-2 {
+  width: 4rem;
+  height: 4rem;
+  background: rgb(10, 89, 207);
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.food-3 {
+  width: 4rem;
+  height: 4rem;
+  background: rgb(185, 43, 0);
+  border-radius: 50%;
+  margin-bottom: 1rem;
 }
 
 @keyframes fadeIn {

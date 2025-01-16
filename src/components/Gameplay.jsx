@@ -168,9 +168,7 @@ const Gameplay = ({ gold, setGold, temperature, setTemperature, isThermostatExpa
                 <div className="overlay-thermometer" onClick={() => setIsThermostatExpanded(false)}></div>
                     <div className="overlay-content-thermometer">
                         <button className="close-btn-thermometer" onClick={() => setIsThermostatExpanded(false)}> X </button>
-                        <div className="thermometer" onClick={handleThermostatClick}>
-                            {temperature}
-                        </div>
+                        <div className="thermometer" onClick={handleThermostatClick}> {temperature} </div>
                         <button className="decrement-btn" onClick={decrementTemperature}></button>
                         <button className="increment-btn" onClick={incrementTemperature}></button>
                     </div>

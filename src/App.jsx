@@ -11,6 +11,7 @@ import triangle from '/assets/triangle.svg';
 
 import SettingsPage from './pages/SettingPage';
 import EducationPage from './pages/EducationPage';
+import ShopPage from './pages/ShopPage';
 import AutoplayAudio from './components/AutoplayAudio';
 
 const generateRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
@@ -25,6 +26,8 @@ export default function App() {
   const [gold, setGold] = useState(0);
   const [isThermostatExpanded, setIsThermostatExpanded] = useState(false); // Track expanded state
   const [temperature, setTemperature] = useState(generateRandom(15, 25));
+  const [inventory, setInventory] = useState([]);
+  const [equippedItem, setEquippedItem] = useState(null);
 
   const dialogueLines = [
     "Buna! Sunt Nanozostera și am nevoie de ajutor!",
@@ -149,6 +152,17 @@ export default function App() {
             )
           }
 
+          {gameState === "shop" && (
+              <ShopPage
+                gold = {gold}
+                setGold = {setGold}
+                resetGameMode = {resetGameMode}
+                inventory = {inventory}
+                setInventory = {setInventory}
+              />
+            )
+          }
+
           {gameState === "game" && (
             <div className="game-wrapper">
               <div className="game-content-game">
@@ -156,7 +170,7 @@ export default function App() {
                 {gameState === "game" && <Gameplay gold={gold} setGold={setGold} temperature={temperature} setTemperature={setTemperature} isThermostatExpanded={isThermostatExpanded} setIsThermostatExpanded={setIsThermostatExpanded} />}
               </div>
               <div className="sidebar">
-                <button className="sidebar-button currency-button" onClick={() => console.log('Currency')}>
+                <button className="sidebar-button currency-button" onClick={() => setGameState('shop')}>
                   {gold}💰
                 </button>
                 <button className="sidebar-button settings-button" onClick={() => setGameState('settings')}>
