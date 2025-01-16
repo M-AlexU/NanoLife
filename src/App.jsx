@@ -22,10 +22,12 @@ export default function App() {
   const [gameState, setGameState] = useState("splash"); // Track the current game state
   const [currentDialogue, setCurrentDialogue] = useState(0); // Track current dialogue line
   const [showInstructions, setShowInstructions] = useState(true);
-  const [audioPlay, setAudioPlay] = useState(false); //Track if audio should be playing
+  const [audioPlay, setAudioPlay] = useState(false); //Track if audio should be playing
   const [gold, setGold] = useState(0);
   const [isThermostatExpanded, setIsThermostatExpanded] = useState(false); // Track expanded state
   const [temperature, setTemperature] = useState(generateRandom(15, 25));
+  const [isSalinityExpanded, setIsSalinityExpanded] = useState(false); // Track expanded state
+  const [salinity, setSalinity] = useState(generateRandom(15, 25));
   const [inventory, setInventory] = useState([]);
   const [equippedItem, setEquippedItem] = useState(null);
 
@@ -40,14 +42,6 @@ export default function App() {
     const timer = setTimeout(() => {
       setShowGameName(true);
     }, 3000);
-
-    const handleCheckboxChange = (newState) => {
-      setAudioPlay(newState);
-    }
-  
-    const resetGameMode = () => {
-      setGameState('game');
-    }
 
     return () => clearTimeout(timer); // Clean up the timer when the component unmounts
   }, []);
@@ -167,7 +161,20 @@ export default function App() {
             <div className="game-wrapper">
               <div className="game-content-game">
                 {/* aquarium-related UI here */}
-                {gameState === "game" && <Gameplay gold={gold} setGold={setGold} temperature={temperature} setTemperature={setTemperature} isThermostatExpanded={isThermostatExpanded} setIsThermostatExpanded={setIsThermostatExpanded} />}
+                {gameState === "game" && 
+                  <Gameplay 
+                    gold={gold} 
+                    setGold={setGold} 
+                    temperature={temperature} 
+                    setTemperature={setTemperature} 
+                    isThermostatExpanded={isThermostatExpanded} 
+                    setIsThermostatExpanded={setIsThermostatExpanded} 
+                    salinity={salinity}
+                    setSalinity={setSalinity}
+                    isSalinityExpanded={isSalinityExpanded}
+                    setIsSalinityExpanded={setIsSalinityExpanded}
+                  />
+                }
               </div>
               <div className="sidebar">
                 <button className="sidebar-button currency-button" onClick={() => setGameState('shop')}>
