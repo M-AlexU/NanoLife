@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
-import backgroundMusic from '../../public/assets/background_music.mp3';
+import backgroundMusic from '/assets/background_music.mp3';
 
 const AutoplayAudio = ({ play }) => {
   const audioRef = useRef(null);

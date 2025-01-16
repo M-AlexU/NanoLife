@@ -175,14 +175,20 @@ button:hover {
 
 /* Content inside the overlay */
 .overlay-content-thermometer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
     background: white;
     border-radius: 10px;
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    position: relative;
     width: 300px; /* Adjust as needed */
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
 }
 
 /* X button */
@@ -234,6 +240,7 @@ button:hover {
     background: url("./assets/Plus.png") no-repeat center center;
     background-size: contain;
 }
+
 
 @keyframes fadeInOut {
     0% {
