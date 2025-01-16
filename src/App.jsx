@@ -191,8 +191,8 @@ export default function App() {
               {showInstructions && (
                 <div className="overlay">
                   <div className="overlay-content">
-                    <p className="gameplay-instructions">Welcome to the aquarium! Let’s learn how to play.</p>
-                    <button className="overlay-button" onClick={() => setShowInstructions(false)}>Got it!</button>
+                    <p className="gameplay-instructions">Bine ai venit! Scurt ghid pentru jocul NanoLife. Trebuie sa ai grija de planta nanozostera zilnic prin mentionerea temperaturii la 20 de grade Celsius, salinitatii la 20 si prin a te asigura ca o hranesti cu nutrienti.</p>
+                    <button className="overlay-button" onClick={() => setShowInstructions(false)}>Am inteles!</button>
                   </div>
                 </div>
               )}
