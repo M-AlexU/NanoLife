@@ -54,8 +54,8 @@ const SettingsPage = ({isChecked, onCheckboxChange, resetGameMode}) => {
                 </div>
                 <div>
                     <h1 className="page-header">Informatii despre joc</h1>
-                    <a href='https://google.com' target='_blank' className="settings-content">
-                        <span className="settings-label">🏆 Despre competitie</span>
+                    <a href='https://save-nanozostera.com/' target='_blank' className="settings-content">
+                        <span className="settings-label">🏆 Despre competitie si proiect</span>
                         <img 
                             src={triangle} 
                             alt="Next" 

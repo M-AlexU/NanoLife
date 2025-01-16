@@ -180,6 +180,7 @@
   flex-shrink: 0; /* Prevents shrinking */
   height: 94vh; /* Match the height of the game content */
   width: 8vw; /* Fixed width for the sidebar */
+  min-width: 5rem;
   background-color: #ececec;
   display: flex;
   flex-direction: column;
