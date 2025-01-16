@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import "../styles/Gameplay.css";
 
 import closeButton from "../../public/assets/close_button.svg";
+import darkModeButton from "../../public/assets/DarkMode.png";
 import minusButton from "../../public/assets/Minus.png";
 import plusButton from "../../public/assets/Plus.png";
 import foodButton from "../../public/assets/mancare.png";
@@ -96,6 +97,10 @@ const Gameplay = ({ setGold, temperature, setTemperature, isThermostatExpanded, 
         setGold((gold) => gold + 1);
     };
 
+    const handleDarkMode = () => {
+        document.querySelector(".aquarium").classList.toggle("darkmode");
+    }
+
     // Handle thermostat toggle
     const handleThermostatClick = () => {
         setIsThermostatExpanded((prev) => !prev);
@@ -175,6 +180,10 @@ const Gameplay = ({ setGold, temperature, setTemperature, isThermostatExpanded, 
         {/* Feed Nutrients */}
         <div className="nutrients">
             <img src={foodButton} alt="Feed" className="nutrients" onClick={handleThrowNutrient} />
+        </div>
+
+        <div className="nutrients">
+            <img src={darkModeButton} alt="darkMode" className="dark-mode" onClick={handleDarkMode} />
         </div>
 
         {/* Feedback Message */}
