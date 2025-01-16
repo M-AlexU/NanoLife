@@ -1,12 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import PropTypes from 'prop-types';
 import "../styles/Gameplay.css";
+
+import closeButton from "../../public/assets/close_button.svg";
+import minusButton from "../../public/assets/Minus.png";
+import plusButton from "../../public/assets/Plus.png";
+import foodButton from "../../public/assets/mancare.png";
 
 // Utility function for random number generation
 const generateRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-const Gameplay = ({ gold, setGold, temperature, setTemperature, isThermostatExpanded, setIsThermostatExpanded }) => {
+const Gameplay = ({ setGold, temperature, setTemperature, isThermostatExpanded, setIsThermostatExpanded, salinity, setSalinity, isSalinityExpanded, setIsSalinityExpanded }) => {
     const [currentDate, setCurrentDate] = useState(new Date().toDateString());
-    const [salinity, setSalinity] = useState(generateRandom(10, 20));
     const [algae, setAlgae] = useState([]);
     const [nutrientsThrown, setNutrientsThrown] = useState([]);
     const [feedbackMessage, setFeedbackMessage] = useState(""); // State for feedback
@@ -94,7 +99,6 @@ const Gameplay = ({ gold, setGold, temperature, setTemperature, isThermostatExpa
     // Handle thermostat toggle
     const handleThermostatClick = () => {
         setIsThermostatExpanded((prev) => !prev);
-        console.log("Thermostat: ", isThermostatExpanded);
     };
 
     // Increment and decrement temperature
@@ -104,6 +108,18 @@ const Gameplay = ({ gold, setGold, temperature, setTemperature, isThermostatExpa
 
     const decrementTemperature = () => {
         setTemperature((prevTemp) => prevTemp - 1);
+    };
+
+    const handleSalinityClick = () => {
+        setIsSalinityExpanded((prev) => !prev);
+    };
+
+    const incrementSalinity = () => {
+        setSalinity((prevSalinity) => prevSalinity + 1);
+    };
+
+    const decrementSalinity = () => {    
+        setSalinity((prevSalinity) => prevSalinity - 1);
     };
 
     return (
@@ -140,8 +156,10 @@ const Gameplay = ({ gold, setGold, temperature, setTemperature, isThermostatExpa
             {/* Salinity meter */}
             <div
                 className="salinity-meter"
+                onClick={handleSalinityClick}
                 style={{ top: `${aquariumTop - 10}px` }} // Adjusting 20px from the top of the aquarium
             >
+                <span>{salinity}</span>
             </div>
 
             {/* Thermometer */}
@@ -156,7 +174,7 @@ const Gameplay = ({ gold, setGold, temperature, setTemperature, isThermostatExpa
 
         {/* Feed Nutrients */}
         <div className="nutrients">
-            <button onClick={handleThrowNutrient}></button>
+            <img src={foodButton} alt="Feed" className="nutrients" onClick={handleThrowNutrient} />
         </div>
 
         {/* Feedback Message */}
@@ -167,12 +185,31 @@ const Gameplay = ({ gold, setGold, temperature, setTemperature, isThermostatExpa
             <>
                 <div className="overlay-thermometer" onClick={() => setIsThermostatExpanded(false)}></div>
                     <div className="overlay-content-thermometer">
-                        <button className="close-btn-thermometer" onClick={() => setIsThermostatExpanded(false)}> X </button>
-                        <div className="thermometer" onClick={handleThermostatClick}>
+                        <img src={closeButton} alt="X" className="close-button" onClick={() => setIsThermostatExpanded(false)} />
+                        <div className="large-thermometer" onClick={handleThermostatClick}>
                             {temperature}
                         </div>
-                        <button className="decrement-btn" onClick={decrementTemperature}></button>
-                        <button className="increment-btn" onClick={incrementTemperature}></button>
+                        <div className="buttons-thermometer-flex">
+                            <img className="decrement-btn" src={minusButton} alt="-" onClick={decrementTemperature} />
+                            <img className="increment-btn" src={plusButton} alt="+" onClick={incrementTemperature} />
+                        </div>
+                    </div>
+            </>
+            )};
+
+            {/* Expanded Salinity Controls */}
+            {isSalinityExpanded && (
+            <>
+                <div className="overlay-thermometer" onClick={() => setIsSalinityExpanded(false)}></div>
+                    <div className="overlay-content-salinity">
+                        <img src={closeButton} alt="X" className="close-button" onClick={() => setIsSalinityExpanded(false)} />
+                        <div className="large-salinity-controls" onClick={handleSalinityClick}>
+                            <span>{salinity}</span>
+                        </div>
+                        <div className="buttons-salinity-flex">
+                            <img className="decrement-btn" src={minusButton} alt="-" onClick={decrementSalinity} />
+                            <img className="increment-btn" src={plusButton} alt="+" onClick={incrementSalinity} />
+                        </div>
                     </div>
             </>
             )};
@@ -187,4 +224,19 @@ const generateRandomPosition = (containerWidth, containerHeight, margin = 20) =>
     const x = Math.floor(Math.random() * (containerWidth - 2 * 120) + margin);
     const y = Math.floor(Math.random() * (containerHeight - 2 * 120) + margin);
     return { x, y, id: Math.random().toString(36).slice(2, 9) }; // Unique ID
+};
+
+
+Gameplay.propTypes = {
+    aquariumTop: PropTypes.number.isRequired,
+    gold: PropTypes.number.isRequired,
+    setGold: PropTypes.func.isRequired,
+    temperature: PropTypes.number.isRequired,
+    setTemperature: PropTypes.func.isRequired,
+    isThermostatExpanded: PropTypes.bool.isRequired,
+    setIsThermostatExpanded: PropTypes.func.isRequired,
+    salinity: PropTypes.number.isRequired,
+    setSalinity: PropTypes.func.isRequired,
+    isSalinityExpanded: PropTypes.bool.isRequired,
+    setIsSalinityExpanded: PropTypes.func.isRequired
 };
