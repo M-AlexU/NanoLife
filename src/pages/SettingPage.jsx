@@ -12,12 +12,12 @@ const SettingsPage = ({isChecked, onCheckboxChange, resetGameMode}) => {
 
     return(
         <div className="game-wrapper">
-            <div className="game-content-game page">
+            <div className="game-content-settings-education page">
                 <img onClick={resetMode} className='close-button' src={closeButton} alt="X" />
                 <div>
                     <h1 className="page-header">Sunet & Notificari</h1>
                     <div className="settings-content">
-                        <label htmlFor='audio-checkbox' className="settings-label">🔊 Musica de fundal</label>
+                        <label htmlFor='audio-checkbox' className="settings-label">🔊 Muzica de fundal</label>
                         <div className="checkbox-wrapper">
                             <input 
                                 id='audio-checkbox'

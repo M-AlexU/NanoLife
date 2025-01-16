@@ -93,8 +93,8 @@
 /* Styles for the intro sequence */
 .plant-image {
   position: absolute;
-  top: 2%;
-  right: 2%;
+  top: -2%;
+  right: -1%;
   max-width: 15%; /* Adjust the size of the plant */
   z-index: 2;
 }
@@ -150,15 +150,23 @@
   justify-content: center; /* Centers the content horizontally */
   align-items: center; /* Centers the content vertically */
   position: relative;
+  min-width: 800px;
 }
 
 /* The aquarium/game screen content */
 .game-content-game {
   flex-shrink: 0; /* Prevents shrinking when the screen is small */
+  height: 94vh;
+  width: 65vw;
+  z-index: 2;
+}
+
+.game-content-settings-education {
+  flex-shrink: 0; /* Prevents shrinking when the screen is small */
   background-color: rgba(255, 255, 255, 0.75);
   border-radius: 16px;
-  height: 90vh;
-  width: 80vw;
+  height: 94vh;
+  width: 65vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -170,8 +178,8 @@
 /* Sidebar container */
 .sidebar {
   flex-shrink: 0; /* Prevents shrinking */
-  height: 90vh; /* Match the height of the game content */
-  width: 5vw; /* Fixed width for the sidebar */
+  height: 94vh; /* Match the height of the game content */
+  width: 8vw; /* Fixed width for the sidebar */
   background-color: #ececec;
   display: flex;
   flex-direction: column;
@@ -185,8 +193,8 @@
 
 /* Sidebar buttons */
 .sidebar-button {
-  width: 32px;
-  height: 32px;
+  width: 4rem;
+  height: 4rem;
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -196,6 +204,7 @@
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease;
+  font-size: 2rem;
 }
 
 .sidebar-button:hover {
@@ -204,15 +213,16 @@
 
 /* Specific button styles */
 .currency-button {
-  background-color: #ffc107;
+  background-color: #f1b500;
+  height: 5.4rem;
 }
 
 .currency-button:hover {
-  background-color: #e0a800;
+  background-color: #d6a204;
 }
 
 .currency-button:active {
-  background-color: #be9004;
+  background-color: #cc9a04;
 }
 
 .settings-button {
@@ -239,6 +249,55 @@
   background-color: #19772e;
 }
 
+/* Full-page overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+  z-index: 1000; /* Ensure it's above other elements */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px); /* Blur everything behind */
+}
+
+/* Content inside the overlay */
+.overlay-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gameplay-instructions {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.overlay-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.overlay-button:hover {
+  background-color: #45a049;
+}
+
+.blurred {
+  filter: blur(5px);
+  pointer-events: none; /* Prevent interaction with blurred content */
+}
+
 /** SETTINGS PAGE STYLING **/
 
 .page {
@@ -246,7 +305,7 @@
   display: block;
   height: 80vh;
   padding: 5vh 0;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .page-header {
@@ -351,7 +410,7 @@
 
 .close-button{
   position: absolute;
-  right: 7em;
+  right: 20%;
 }
 
 .education-paragraph{

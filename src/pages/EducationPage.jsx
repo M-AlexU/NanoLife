@@ -8,7 +8,7 @@ const EducationPage = ({ resetGameMode }) => {
 
     return(
         <div className="game-wrapper">
-            <div className="game-content-game page">
+            <div className="game-content-settings-education page">
                 <img onClick={resetMode} className='close-button' src={closeButton} alt="X" />
                 <h1 className='page-header'>Invata despre Nanozostera!</h1>
                 <p className='education-paragraph'>

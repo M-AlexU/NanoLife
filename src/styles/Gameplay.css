@@ -1,0 +1,251 @@
+/* Gameplay.css */
+.aquarium {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background: url("./assets/Acvariu.png") no-repeat center center;
+    background-size: cover;
+    padding: 0;
+    border: 2px solid #333;
+    border-radius: 16px;
+    overflow: hidden;
+    min-width: none;
+}
+
+.algae {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    background: url("./assets/Algae 1.png") no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+    animation: float 3s infinite ease-in-out;
+    z-index: 3;
+}
+
+.nutrient {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+    animation: nutrient-fall 3s ease-in-out forwards;
+}
+
+  /* Float animation for algae */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+  /* Fall animation for nutrients */
+@keyframes nutrient-fall {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+.salinity-meter,
+.thermometer {
+    position: absolute;
+    left: 10px; /* Adjust horizontal positioning as needed */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 2;
+}
+
+.thermometer {
+    background: url("./assets/Temperature.png") no-repeat;
+    background-size: contain;
+    width: 240px;
+    height: 60px;
+    left: 77%;
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2.4em;
+    text-align: left;
+    letter-spacing: 2px;
+    font-weight: 800;
+    color: rgb(94, 15, 15);
+    text-indent: 25px;
+}
+
+.salinity-meter {
+    background: url("./assets/Salinity.png") no-repeat;
+    background-size: contain;
+    height: 180px;
+    width: 80px;
+    left: -3%;
+}
+
+.meters {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.feedback-message {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: rgba(0, 255, 0, 0.7);
+    color: white;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInOut 3s forwards; /* 3 seconds total: 1s fade-in, 1s wait, 1s fade-out */
+    z-index: 5;
+}
+
+.Nanoz {
+    background: url("./assets/Nanoz.png") no-repeat center center;
+    background-size: contain;
+    position: relative;
+    left: 30%;
+    top: 20svh;
+    width: 30vw;
+    height: 80vh;
+}
+
+.nutrients {
+    position: absolute;
+    bottom: 10px; /* Distance from the bottom of the aquarium */
+    right: 10px; /* Distance from the right side of the aquarium */
+}
+
+.nutrients button {
+    padding: 10px 20px;
+    background: url("./assets/mancare.svg") no-repeat center center;
+    background-color: #00b7cf;
+    color: white;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+}
+
+.nutrients button:hover {
+    background-color: #0098ac;
+}
+
+/* Blurred background */
+.overlay-thermometer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(8px); /* Apply the blur effect */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Ensure it's above other elements */
+}
+
+/* Content inside the overlay */
+.overlay-content-thermometer {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    width: 300px; /* Adjust as needed */
+    z-index: 1000;
+}
+
+/* X button */
+.close-button-thermometer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Thermometer styling */
+.large-thermometer {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+/* Buttons inside the overlay */
+.buttons-container-thermometer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button-1, .button-2 {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    transition: background 0.3s;
+}
+
+.button-1:hover, .button-2:hover {
+    background: #0056b3;
+}
+
+.decrement-btn {
+    background: url("./assets/Minus.png") no-repeat center center;
+    background-size: contain;
+}
+
+.increment-btn {
+    background: url("./assets/Plus.png") no-repeat center center;
+    background-size: contain;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

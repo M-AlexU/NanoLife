@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import './styles/global.css';
+import Gameplay from './components/Gameplay';
 import background from '/assets/background.png'; // background image
 import gameName from '/assets/nanoLife_title.png'; // The game's name image
 import playButton from '/assets/button_play.png'; // The "PLAY" button image
@@ -12,12 +13,18 @@ import SettingsPage from './pages/SettingPage';
 import EducationPage from './pages/EducationPage';
 import AutoplayAudio from './components/AutoplayAudio';
 
+const generateRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
 export default function App() {
   const [showGameName, setShowGameName] = useState(false); // Controls when the game name appears
   const [isLandscape, setIsLandscape] = useState(window.innerWidth > window.innerHeight);
   const [gameState, setGameState] = useState("splash"); // Track the current game state
   const [currentDialogue, setCurrentDialogue] = useState(0); // Track current dialogue line
-  const [audioPlay, setAudioPlay] = useState(false); //Track if audio should be playing
+  const [showInstructions, setShowInstructions] = useState(true);
+  const [audioPlay, setAudioPlay] = useState(false); //Track if audio should be playing
+  const [gold, setGold] = useState(0);
+  const [isThermostatExpanded, setIsThermostatExpanded] = useState(false); // Track expanded state
+  const [temperature, setTemperature] = useState(generateRandom(15, 25));
 
   const dialogueLines = [
     "Buna! Sunt Nanozostera și am nevoie de ajutor!",
@@ -30,6 +37,14 @@ export default function App() {
     const timer = setTimeout(() => {
       setShowGameName(true);
     }, 3000);
+
+    const handleCheckboxChange = (newState) => {
+      setAudioPlay(newState);
+    }
+  
+    const resetGameMode = () => {
+      setGameState('game');
+    }
 
     return () => clearTimeout(timer); // Clean up the timer when the component unmounts
   }, []);
@@ -90,15 +105,15 @@ export default function App() {
             <div className="splash-screen">
               {showGameName && (
                 <div className="game-content fade-in-button">
-                  <img src={gameName} alt="Game Name" className="game-name" />
-                  <img 
-                    src={playButton} 
-                    alt="Play Button" 
-                    className="play-button"
-                    onClick={handlePlayClick}
-                  />
-                </div>  
-              )}              
+                <img src={gameName} alt="Game Name" className="game-name" />
+                <img 
+                  src={playButton} 
+                  alt="Play Button" 
+                  className="play-button"
+                  onClick={handlePlayClick}
+                />
+              </div>
+              )}
             </div>              
           )}
 
@@ -137,20 +152,29 @@ export default function App() {
           {gameState === "game" && (
             <div className="game-wrapper">
               <div className="game-content-game">
-                <p>Welcome to the aquarium! Let’s learn how to play.</p>
-                {/* Add aquarium-related UI here */}
+                {/* aquarium-related UI here */}
+                {gameState === "game" && <Gameplay gold={gold} setGold={setGold} temperature={temperature} setTemperature={setTemperature} isThermostatExpanded={isThermostatExpanded} setIsThermostatExpanded={setIsThermostatExpanded} />}
               </div>
               <div className="sidebar">
                 <button className="sidebar-button currency-button" onClick={() => console.log('Currency')}>
-                  💰
+                  {gold}💰
                 </button>
                 <button className="sidebar-button settings-button" onClick={() => setGameState('settings')}>
-                  ⚙️
+                  ⚙
                 </button>
                 <button className="sidebar-button education-button" onClick={() => setGameState('education')}>
                   📘
                 </button>
               </div>
+
+              {showInstructions && (
+                <div className="overlay">
+                  <div className="overlay-content">
+                    <p className="gameplay-instructions">Welcome to the aquarium! Let’s learn how to play.</p>
+                    <button className="overlay-button" onClick={() => setShowInstructions(false)}>Got it!</button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
       </div>        
