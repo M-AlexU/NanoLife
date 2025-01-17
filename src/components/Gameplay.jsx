@@ -8,8 +8,6 @@ import minusButton from "../../public/assets/Minus.png";
 import plusButton from "../../public/assets/Plus.png";
 import foodButton from "../../public/assets/mancare.png";
 
-// Utility function for random number generation
-const generateRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 const Gameplay = ({ setGold, temperature, setTemperature, isThermostatExpanded, setIsThermostatExpanded, salinity, setSalinity, isSalinityExpanded, setIsSalinityExpanded, equippedItem }) => {
     const [currentDate, setCurrentDate] = useState(new Date().toDateString());
@@ -22,8 +20,6 @@ const Gameplay = ({ setGold, temperature, setTemperature, isThermostatExpanded, 
 
     // Function to reset tasks
     const resetDailyTasks = () => {
-        setSalinity(generateRandom(10, 20));
-        setTemperature(generateRandom(15, 25));
         setNutrientsThrown([]); // Clear nutrients
         setFeedbackMessage(""); // Clear feedback message at the start of the day
     };
@@ -246,5 +242,5 @@ Gameplay.propTypes = {
     setSalinity: PropTypes.func.isRequired,
     isSalinityExpanded: PropTypes.bool.isRequired,
     setIsSalinityExpanded: PropTypes.func.isRequired,
-    equippedItem: PropTypes.object,
+    equippedItem: PropTypes.object
 };

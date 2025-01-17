@@ -9,9 +9,9 @@ const ShopPage = ({gold, setGold, resetGameMode, inventory, setInventory, setEqu
     const resetMode = () => resetGameMode();
 
     const food = [
-        {id: 1, name: 'Verde Vital', price: 500, className: 'food-1'},
-        {id: 2, name: 'Algissimo', price: 500, className: 'food-2'},
-        {id: 3, name: 'AlgaNutri', price: 500, className: 'food-3'}
+        {id: 1, name: 'Verde Vital', price: 50, className: 'food-1'},
+        {id: 2, name: 'Algissimo', price: 50, className: 'food-2'},
+        {id: 3, name: 'AlgaNutri', price: 50, className: 'food-3'}
     ];
 
   /*   const alge = [

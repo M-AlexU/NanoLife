@@ -17,19 +17,59 @@ import AutoplayAudio from './components/AutoplayAudio';
 const generateRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 export default function App() {
+
+  const initialState = {
+    date: new Date().toDateString(),
+    gold: 0,
+    temperature: false,
+    salinity: false,
+    inventory: [],
+    equipedItem: null,
+  };
+
+  const [storage, setStorage] = useState(() => {
+    const savedStorage = localStorage.getItem('storage');
+    if (savedStorage) {
+      const parsedStorage = JSON.parse(savedStorage);
+      const currentDate = new Date().toDateString();
+
+      if (parsedStorage.date !== currentDate) {
+        // Preserve specific fields when resetting
+        const { gold, inventory, equippedItem } = parsedStorage;
+        const updatedStorage = {
+          ...initialState,
+          gold,
+          inventory,
+          equippedItem,
+        };
+
+        localStorage.setItem('storage', JSON.stringify(updatedStorage));
+        return updatedStorage;
+      }
+
+      return parsedStorage;
+    }
+
+    // Initialize storage if none exists
+    localStorage.setItem('storage', JSON.stringify(initialState));
+    return initialState;
+  });
+
+
   const [showGameName, setShowGameName] = useState(false); // Controls when the game name appears
   const [isLandscape, setIsLandscape] = useState(window.innerWidth > window.innerHeight);
   const [gameState, setGameState] = useState("splash"); // Track the current game state
   const [currentDialogue, setCurrentDialogue] = useState(0); // Track current dialogue line
   const [showInstructions, setShowInstructions] = useState(true);
   const [audioPlay, setAudioPlay] = useState(false); //Track if audio should be playing
-  const [gold, setGold] = useState(0);
+  const [gold, setGold] = useState(storage.gold);
   const [isThermostatExpanded, setIsThermostatExpanded] = useState(false); // Track expanded state
-  const [temperature, setTemperature] = useState(generateRandom(15, 25));
+  const [temperature, setTemperature] = useState(storage.temperature == true ? 20 : generateRandom(15, 25));
   const [isSalinityExpanded, setIsSalinityExpanded] = useState(false); // Track expanded state
-  const [salinity, setSalinity] = useState(generateRandom(15, 25));
-  const [inventory, setInventory] = useState([]);
-  const [equippedItem, setEquippedItem] = useState(null);
+  const [salinity, setSalinity] = useState(storage.salinity == true ? 20 : generateRandom(15, 25));
+  const [inventory, setInventory] = useState(storage.inventory);
+  const [equippedItem, setEquippedItem] = useState(storage.equippedItem);
+
 
   const dialogueLines = [
     "Buna! Sunt Nanozostera și am nevoie de ajutor!",
@@ -45,6 +85,25 @@ export default function App() {
 
     return () => clearTimeout(timer); // Clean up the timer when the component unmounts
   }, []);
+  
+  useEffect(() => {
+    setStorage((prevStorage) => {
+      const updatedStorage = {
+        ...prevStorage,
+        gold,
+        equippedItem,
+        inventory,
+        temperature: temperature === 20 ? true : false,
+        salinity: salinity === 20 ? true : false,
+      };
+  
+      // Save the updated storage to localStorage
+      localStorage.setItem('storage', JSON.stringify(updatedStorage));
+  
+      return updatedStorage;
+    });
+  }, [gold, salinity, temperature, equippedItem, inventory]);
+  
 
   useEffect(() => {
     const handleResize = () => {
@@ -155,6 +214,8 @@ export default function App() {
                 setInventory = {setInventory}
                 equippedItem = {equippedItem}
                 setEquippedItem = {setEquippedItem}
+                storage = {storage}
+                setStorage = {setStorage}
               />
             )
           }
@@ -176,6 +237,8 @@ export default function App() {
                     isSalinityExpanded={isSalinityExpanded}
                     setIsSalinityExpanded={setIsSalinityExpanded}
                     equippedItem={equippedItem}
+                    storage={storage}
+                    setStorage={setStorage}
                   />
                 }
               </div>
